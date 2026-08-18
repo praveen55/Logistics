@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us</title>
   <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --primary-light: #e0e7ff;
+      --secondary: #06b6d4;
+      --accent: #f59e0b;
+      --success: #10b981;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -14,128 +27,211 @@
     body {
       font-family: system-ui, -apple-system, sans-serif;
       line-height: 1.6;
-      color: #334155;
-      background-color: #f8fafc;
+      color: var(--text-main);
+      background-color: var(--bg);
     }
 
-    /* Hero Banner */
+    /* Hero Banner with Multi-stop Gradient */
     .about-hero {
-      background: linear-gradient(135deg, #1e293b, #0f172a);
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #0f766e 100%);
       color: #ffffff;
       text-align: center;
-      padding: 4rem 1.5rem;
+      padding: 5rem 1.5rem;
+      position: relative;
     }
 
     .about-hero h1 {
-      font-size: 2.5rem;
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
       margin-bottom: 0.75rem;
+      background: linear-gradient(to right, #ffffff, #a5f3fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .about-hero p {
-      font-size: 1.15rem;
-      max-width: 600px;
+      font-size: 1.2rem;
+      max-width: 650px;
       margin: 0 auto;
-      color: #94a3b8;
+      color: #cbd5e1;
     }
 
     /* Container */
     .container {
-      max-width: 1000px;
-      margin: 3rem auto;
+      max-width: 1050px;
+      margin: 3.5rem auto;
       padding: 0 1.5rem;
     }
 
-    /* Mission & Vision Grid */
+    /* Mission & Vision Cards */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3.5rem;
     }
 
     .card {
-      background: #ffffff;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      border-top: 4px solid #2563eb;
+      background: var(--card-bg);
+      padding: 2.25rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.08);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 30px -10px rgba(79, 70, 229, 0.15);
+    }
+
+    .card.mission {
+      border-top: 6px solid var(--primary);
+    }
+
+    .card.vision {
+      border-top: 6px solid var(--secondary);
     }
 
     .card h2 {
-      color: #0f172a;
       margin-bottom: 0.75rem;
-      font-size: 1.35rem;
+      font-size: 1.5rem;
+    }
+
+    .card.mission h2 {
+      color: var(--primary);
+    }
+
+    .card.vision h2 {
+      color: #0e7490;
+    }
+
+    .card p {
+      color: var(--text-muted);
     }
 
     /* Stats Section */
     .stats-section {
-      background: #ffffff;
-      padding: 2.5rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(145deg, #ffffff, #f1f5f9);
+      padding: 3rem 2rem;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .stats-section h2 {
+      font-size: 1.85rem;
+      color: var(--text-main);
     }
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
     }
 
+    .stat-item {
+      padding: 1rem;
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #f1f5f9;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .stat-item.one h3 { color: var(--primary); }
+    .stat-item.two h3 { color: var(--secondary); }
+    .stat-item.three h3 { color: var(--accent); }
+    .stat-item.four h3 { color: var(--success); }
+
     .stat-item h3 {
-      font-size: 2rem;
-      color: #2563eb;
+      font-size: 2.25rem;
+      font-weight: 800;
     }
 
     .stat-item p {
-      color: #64748b;
-      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.25rem;
     }
 
     /* Team Section */
     .team-section h2 {
       text-align: center;
-      margin-bottom: 2rem;
-      color: #0f172a;
+      margin-bottom: 2.5rem;
+      font-size: 2rem;
+      color: var(--text-main);
     }
 
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
     }
 
     .team-member {
-      background: #ffffff;
-      border-radius: 8px;
-      padding: 1.5rem;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
       text-align: center;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s ease;
+    }
+
+    .team-member:hover {
+      transform: translateY(-4px);
     }
 
     .avatar {
-      width: 80px;
-      height: 80px;
+      width: 85px;
+      height: 85px;
       border-radius: 50%;
-      background: #e2e8f0;
-      margin: 0 auto 1rem;
+      margin: 0 auto 1.25rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
-      color: #475569;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .avatar.ceo {
+      background: linear-gradient(135deg, #6366f1, #4338ca);
+      box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+    }
+
+    .avatar.eng {
+      background: linear-gradient(135deg, #06b6d4, #0e7490);
+      box-shadow: 0 8px 16px rgba(6, 182, 212, 0.3);
+    }
+
+    .avatar.ops {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      box-shadow: 0 8px 16px rgba(245, 158, 11, 0.3);
     }
 
     .team-member h3 {
-      font-size: 1.1rem;
-      color: #0f172a;
+      font-size: 1.2rem;
+      color: var(--text-main);
     }
 
     .team-member span {
+      display: inline-block;
+      margin-top: 0.35rem;
       font-size: 0.85rem;
-      color: #2563eb;
+      color: var(--primary);
+      background-color: var(--primary-light);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
       font-weight: 600;
     }
   </style>
@@ -145,62 +241,62 @@
   <!-- Hero Section -->
   <section class="about-hero">
     <h1>About Our Company</h1>
-    <p>Delivering modern solutions and high-performance services to streamline operations worldwide.</p>
+    <p>Delivering modern logistics and tech-driven supply chain solutions worldwide.</p>
   </section>
 
   <main class="container">
     <!-- Mission & Vision -->
     <section class="grid">
-      <div class="card">
+      <div class="card mission">
         <h2>Our Mission</h2>
-        <p>To empower businesses by simplifying complex operations through innovative technology, reliable infrastructure, and customer-first service.</p>
+        <p>To empower businesses by simplifying complex operations through intelligent routing, real-time analytics, and customer-first service.</p>
       </div>
 
-      <div class="card">
+      <div class="card vision">
         <h2>Our Vision</h2>
-        <p>To become a globally recognized leader in providing intelligent, scalable, and sustainable operational platforms.</p>
+        <p>To become a globally recognized leader in sustainable, automated, and high-velocity freight ecosystems.</p>
       </div>
     </section>
 
     <!-- Key Metrics -->
     <section class="stats-section">
-      <h2>By The Numbers</h2>
+      <h2>Operational Impact</h2>
       <div class="stats-grid">
-        <div class="stat-item">
+        <div class="stat-item one">
           <h3>99.9%</h3>
-          <p>Uptime Reliability</p>
+          <p>On-Time Delivery</p>
         </div>
-        <div class="stat-item">
+        <div class="stat-item two">
           <h3>10k+</h3>
-          <p>Active Users</p>
+          <p>Active Routes</p>
         </div>
-        <div class="stat-item">
+        <div class="stat-item three">
           <h3>50+</h3>
           <p>Global Hubs</p>
         </div>
-        <div class="stat-item">
+        <div class="stat-item four">
           <h3>24/7</h3>
-          <p>Support Available</p>
+          <p>Live Monitoring</p>
         </div>
       </div>
     </section>
 
     <!-- Leadership Team -->
     <section class="team-section">
-      <h2>Our Leadership</h2>
+      <h2>Leadership Team</h2>
       <div class="team-grid">
         <div class="team-member">
-          <div class="avatar">JD</div>
+          <div class="avatar ceo">JD</div>
           <h3>John Doe</h3>
           <span>Chief Executive Officer</span>
         </div>
         <div class="team-member">
-          <div class="avatar">JS</div>
+          <div class="avatar eng">JS</div>
           <h3>Jane Smith</h3>
           <span>Head of Engineering</span>
         </div>
         <div class="team-member">
-          <div class="avatar">AR</div>
+          <div class="avatar ops">AR</div>
           <h3>Alex Rivera</h3>
           <span>Operations Lead</span>
         </div>
